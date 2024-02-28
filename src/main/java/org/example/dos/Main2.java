@@ -16,10 +16,19 @@ public class Main2 {
         // Entra en un bucle infinito
         while (true) {
             // Solicita una URL al usuario
-            System.out.println("Introduce una URL:");
-            String url = scanner.nextLine();
+            System.out.println("Introduce una URL o escribe 'salir' para finalizar:");
+            String input = scanner.nextLine();
+            // Verifica si el usuario desea salir
+            if ("salir".equalsIgnoreCase(input)) {
+                break; // Sale del bucle
+            }
             // Añade la URL a la lista
-            urlList.addURL(url);
+            urlList.addURL(input);
         }
+
+        // Espera a que todas las descargas se completen antes de finalizar
+        System.out.println("Esperando a que todas las descargas finalicen...");
+        descargas.esperarDescargas();
+        System.out.println("Todas las descargas han finalizado. Programa terminado.");
     }
 }
